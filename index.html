@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Logistic0825 - HomePage</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <header class="profile">
+            <div class="avatar">
+                <img src="https://avatars.githubusercontent.com/u/Logistic0825" alt="avatar" id="github-avatar">
+            </div>
+            <h1>Logistic0825</h1>
+            <p class="title">大模型算法工程师 · LLM Researcher</p>
+            <div class="social-links">
+                <a href="https://github.com/Logistic0825" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+            </div>
+        </header>
+
+        <section class="about">
+            <h2><i class="fas fa-user"></i> 关于我</h2>
+            <p>
+                数学背景出身，深耕大语言模型（LLM）算法研究与工业落地。研究方向覆盖大模型后训练（RLHF/GRPO/DPO）、
+                多模态理解与生成交互、推荐系统与数据工程。具备从学术前沿到大规模工业落地的完整技术链路经验，
+                熟悉从数据清洗、持续预训练、SFT、RL 到端侧部署优化的全栈能力。
+            </p>
+        </section>
+
+        <section class="skills">
+            <h2><i class="fas fa-code"></i> 技术栈</h2>
+            <div class="skill-tags">
+                <span class="tag">Python</span>
+                <span class="tag">PyTorch</span>
+                <span class="tag">Transformers</span>
+                <span class="tag">GRPO / GMPO</span>
+                <span class="tag">DPO / PPO</span>
+                <span class="tag">SFT / CPT</span>
+                <span class="tag">Qwen 系列</span>
+                <span class="tag">DeepSeek</span>
+                <span class="tag">扩散模型</span>
+                <span class="tag">文生图 RL</span>
+                <span class="tag">多模态 VLM</span>
+                <span class="tag">TTS / 语音交互</span>
+                <span class="tag">推荐系统</span>
+                <span class="tag">数据工程</span>
+                <span class="tag">RAG</span>
+                <span class="tag">CUDA</span>
+                <span class="tag">ms-swift</span>
+                <span class="tag">OpenCompass</span>
+            </div>
+        </section>
+
+        <section class="projects">
+            <h2><i class="fas fa-project-diagram"></i> 项目经历</h2>
+            <div class="project-list">
+                <div class="project-card">
+                    <h3>电商垂类大模型持续预训练</h3>
+                    <p>
+                        负责清洗 3T 级别高质量电商、通用、数学、代码、翻译、对话等多域数据；
+                        训练 InsTag 指令分类模型，基于 Qwen3-8B 对全量数据标注分类标签，优化 Precision / Coverage / Fine-grained 指标；
+                        搭建基于 OpenCompass 的快速评测 Pipeline，覆盖 MMLU-Pro、IFEval、AIME2025、HLE、GPQA、LiveCodeBench 等 Benchmark；
+                        使用 PreSelect / DEITA 对预训练与 SFT 数据进行质量评估与筛选；基于 Qwen3-Embedding 动态聚类 + 多样性拒绝采样（TAGS / MIG）筛选高质量 SFT 数据；
+                        对 Qwen3-8B / 30B 进行 CPT 与 SFT，在提升电商垂类能力的同时保持通用能力不下降。
+                    </p>
+                    <div class="tech-stack">
+                        <span>CPT</span><span>InsTag</span><span>DEITA</span><span>PreSelect</span><span>Qwen3</span><span>OpenCompass</span>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <h3>文生图模型强化学习优化</h3>
+                    <p>
+                        针对现有文生图 RL 算法缺乏分阶段优化、多目标难以平衡的痛点，设计分阶段多维度奖励函数，
+                        在训练 epoch 中动态连续分配 ImageReward、PicScore、HPS、UnifiedReward 权重以防止 Reward Hacking；
+                        基于 RichHF-18k 数据集实验，采用 ReFL 方法使奖励模型直接在 VAE 带噪空间工作；
+                        使用 GMPO 改进 Flow-GRPO 与 MixGRPO，引入滑动窗口采样策略，KL Loss 与 Policy Loss 稳定性显著提升；
+                        引入扩展提示词 + Pareto 多目标优化框架，求解各奖励目标间的 Pareto 最优解，实现语义一致性与美学质量的协同提升。
+                    </p>
+                    <div class="tech-stack">
+                        <span>Diffusion Model</span><span>MixGRPO</span><span>GMPO</span><span>Pareto Optimization</span><span>ImageReward</span><span>Flow-GRPO</span>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <h3>客服对话大模型应用优化</h3>
+                    <p>
+                        基于用户-客服对话数据进行意图识别与反问质检优化：使用 Qwen3-235B-A22B 进行投诉风险 12 类分类预测，
+                        通过策略调优将触发率从 5.5% 提升至 10.8%、召回率从 52.1% 提升至 67.0%；
+                        对 QwQ-32B 基线反问质检模型进行 SFT，Qwen3-14B-SFT 反问准确率达到 0.838；
+                        在工作流中引入图像理解模块，使用提示词驱动图片识别成功率达 96%，用户 query 末句为图片时意图识别正确率从 54.5% 提升至 76.4%。
+                    </p>
+                    <div class="tech-stack">
+                        <span>GRPO</span><span>DPO</span><span>SFT</span><span>Prompt Engineering</span><span>VLM</span><span>ms-swift</span>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <h3>智能座舱多模态交互系统</h3>
+                    <p>
+                        基于行车记录仪四向视频数据，搭建视频抽帧与街边店铺识别流程；
+                        部署与拆解 Qwen2.5-Omni / Qwen2.5-VL 等端到端多模态大模型各模块，进行时间优化与端侧方案选型；
+                        设计 RAG 召回 + LLM 筛选的 POI 推荐链路，含拒绝识别与追问逻辑；
+                        构建 SFT / DPO / GRPO 数据集，对 Qwen3-8B 进行后训练：SFT 后意图识别准确率 88.5%，GRPO 后进一步达到 95.8%（原始 84.8%）；
+                        对接 TTS 模块完成语音交互闭环，实现"看到即告知"的座舱智能体体验。
+                    </p>
+                    <div class="tech-stack">
+                        <span>Qwen2.5-Omni</span><span>Qwen2.5-VL</span><span>GRPO</span><span>DPO</span><span>RAG</span><span>TTS</span><span>端侧优化</span>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <h3>推荐系统算法竞赛方案</h3>
+                    <p>
+                        围绕用户行为序列建模与物品推荐任务，将核心指标（Hit10Rate + NDCG）从基线 0.023 提升至 0.1032；
+                        使用 HSTU 替换经典 Transformer，融入相对位置与时间偏置，针对 SiLU 特性调整掩码填充值解决训练初期 NaN 问题；
+                        引入 RQVAE 处理高维语义特征，通过残差量化压缩维度后融入物品嵌入层；
+                        将交叉熵损失替换为 infoNCE 对比学习损失，温度系数调优至 0.03，指标跃升至 0.045；
+                        设计多进程数据加载与 GPU 暴力检索方案，训练速度提升 30%，推理时间从 1 小时压缩至 20 分钟。
+                    </p>
+                    <div class="tech-stack">
+                        <span>HSTU</span><span>RQVAE</span><span>infoNCE</span><span>对比学习</span><span>生成式推荐</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="awards">
+            <h2><i class="fas fa-trophy"></i> 竞赛经历</h2>
+            <ul class="award-list">
+                <li><i class="fas fa-medal"></i> 头部互联网公司广告算法大赛 — Top 3%（64 / 2800 队）</li>
+                <li><i class="fas fa-medal"></i> 蓝桥杯 Python 研究生组 — 全国总决赛三等奖</li>
+                <li><i class="fas fa-medal"></i> 全国大学生数学竞赛 — 决赛全国二等奖</li>
+                <li><i class="fas fa-medal"></i> 高教社杯全国大学生数学建模竞赛 — 省级一等奖</li>
+                <li><i class="fas fa-medal"></i> 美国大学生数学建模竞赛 — H 奖（二等奖）</li>
+            </ul>
+        </section>
+
+        <footer>
+            <p>Hosted on <a href="https://pages.github.com" target="_blank">GitHub Pages</a> · Logistic0825</p>
+        </footer>
+    </div>
+
+    <script>
+        fetch('https://api.github.com/users/Logistic0825')
+            .then(res => res.json())
+            .then(data => {
+                if(data.avatar_url) {
+                    document.getElementById('github-avatar').src = data.avatar_url;
+                }
+            })
+            .catch(() => {});
+    </script>
+</body>
+</html>
